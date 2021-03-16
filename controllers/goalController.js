@@ -32,11 +32,8 @@ exports.new_goal = function(req, res) {
 
 exports.post_new_goal = function(req, res) {
     console.log('Adding a new goal to DB');
-    if(!req.body.goal || !req.body.startTime || !req.body.endTime || !req.body.startDate || !req.body.user) {
-        response.status(400).send("All fields must have text within them!")
-        return;
-    }
 
+    console.log(req.body.goal);
     db.addGoal(req.body.goal, req.body.startTime, req.body.endTime, req.body.startDate, req.body.user);
     res.redirect('/ViewTrainingGoals');
 }

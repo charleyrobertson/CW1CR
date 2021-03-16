@@ -45,6 +45,7 @@ class Goal {
 
     addGoal(goalIn, startTimeIn, endTimeIn, startDateIn, userIn) {
         console.log('Adding goal to the database');
+        console.log(goalIn, startTimeIn, endTimeIn, startDateIn, userIn);
         var entry = {
             goal: goalIn,
             startDate: startDateIn,
@@ -63,7 +64,7 @@ class Goal {
     }//End add goal
 }
 
-//db.addGoal(req.body.goal, req.body.startTime, req.body.endTime, req.body.startDate, req.body.user);
+
 
 
 

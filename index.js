@@ -6,6 +6,9 @@ const router = require('./routes/routes');
 const views = path.join(__dirname, "views");
 const public = path.join(__dirname, "public");
 
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({extended:false}));
+ 
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
 
