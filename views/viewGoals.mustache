@@ -10,7 +10,10 @@
         </a>
     </div>
 
+
+
     {{#entries}}
+    <div hidden>{{_id}}</div>
     <div>
        Fitness Goal: {{goal}}
     </div>
@@ -24,8 +27,8 @@
         Written by {{user}} , on {{startDate}}
     </div>
     <div>
-        <a href="#">Update</a> 
-        <a href="#">Delete</a> 
+        <a href="/updateGoal">Update</a> 
+        <a href="/deleteGoal/{{_id}}">Delete</a> 
     </div>
     <hr>
     {{/entries}}
