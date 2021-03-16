@@ -38,3 +38,19 @@ exports.post_new_goal = function(req, res) {
     res.redirect('/ViewTrainingGoals');
 }
 //End of Add a goal
+
+//Update a goal
+
+//End of Update a goal
+
+//Delete a goal
+exports.delete_goal = function(req, res) {
+    res.render('deleteGoal');
+}
+
+exports.post_delete_goal = function(req, res) {
+    console.log('Deleting a goal...');
+    db.deleteGoal(req.params._id);
+    res.redirect('/ViewTrainingGoals');
+}
+//End of Delete a goal

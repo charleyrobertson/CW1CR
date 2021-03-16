@@ -13,6 +13,11 @@ router.get('/ViewTrainingGoals', controller.view_goals);
 router.get('/newGoal', controller.new_goal);
 router.post('/newGoal', controller.post_new_goal);
 
+
+//Delete a goal
+router.get('/deleteGoal/:_id', controller.delete_goal);
+router.post('/deleteGoal/:_id', controller.post_delete_goal);
+
 //Exceptions
 router.use(function(req, res) {
     res.status(404);

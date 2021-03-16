@@ -45,7 +45,6 @@ class Goal {
 
     addGoal(goalIn, startTimeIn, endTimeIn, startDateIn, userIn) {
         console.log('Adding goal to the database');
-        console.log(goalIn, startTimeIn, endTimeIn, startDateIn, userIn);
         var entry = {
             goal: goalIn,
             startDate: startDateIn,
@@ -62,6 +61,19 @@ class Goal {
             }
         })
     }//End add goal
+
+    //Delete goal
+    deleteGoal(id) {
+        this.db.remove({ _id: id}, {}, function(err, docsRem) {
+            if(err) {
+                console.log('Error deleting document.');
+            } else {
+                console.log(docsRem, 'Document(s) removed from database.');
+            }
+        })
+    }
+
+
 }
 
 
