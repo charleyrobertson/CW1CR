@@ -42,6 +42,30 @@ class Goal {
             })
         })
     }//End of getAllGoals()
+
+    addGoal(goalIn, startTimeIn, endTimeIn, startDateIn, userIn) {
+        console.log('Adding goal to the database');
+        var entry = {
+            goal: goalIn,
+            startDate: startDateIn,
+            startTime: startTimeIn,
+            endTime: endTimeIn,
+            user: userIn
+        }
+
+        this.db.insert(entry, function(err, doc) {
+            if(err) {
+                console.log('Error inserting document', goal);
+            } else {
+                console.log('Document inserted into the database', doc);
+            }
+        })
+    }//End add goal
 }
+
+//db.addGoal(req.body.goal, req.body.startTime, req.body.endTime, req.body.startDate, req.body.user);
+
+
+
 
 module.exports = Goal;

@@ -9,6 +9,10 @@ router.get('/', controller.home_page);
 //View all goals page
 router.get('/ViewTrainingGoals', controller.view_goals);
 
+//Add a goal page
+router.get('/newGoal', controller.new_goal);
+router.post('/newGoal', controller.post_new_goal);
+
 //Exceptions
 router.use(function(req, res) {
     res.status(404);

@@ -24,3 +24,20 @@ exports.view_goals = function(req, res) {
     })
 }
 //End of View All Goals
+
+//Add a goal
+exports.new_goal = function(req, res) {
+    res.render('addGoals');
+}
+
+exports.post_new_goal = function(req, res) {
+    console.log('Adding a new goal to DB');
+    if(!req.body.goal || !req.body.startTime || !req.body.endTime || !req.body.startDate || !req.body.user) {
+        response.status(400).send("All fields must have text within them!")
+        return;
+    }
+
+    db.addGoal(req.body.goal, req.body.startTime, req.body.endTime, req.body.startDate, req.body.user);
+    res.redirect('/ViewTrainingGoals');
+}
+//End of Add a goal
