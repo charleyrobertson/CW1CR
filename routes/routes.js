@@ -13,6 +13,9 @@ router.get('/ViewTrainingGoals', controller.view_goals);
 router.get('/newGoal', controller.new_goal);
 router.post('/newGoal', controller.post_new_goal);
 
+//Update a goal
+router.get('/updateGoal/:_id', controller.update_goal);
+router.post('/updateGoal/:_id', controller.post_update_goal);
 
 //Delete a goal
 router.get('/deleteGoal/:_id', controller.delete_goal);

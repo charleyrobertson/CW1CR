@@ -71,11 +71,33 @@ class Goal {
                 console.log(docsRem, 'Document(s) removed from database.');
             }
         })
-    }
+    } //End delete goal
 
+    findUpdateGoal(id) {
+        return new Promise((resolve, reject) => {
+            this.db.find({'_id': id}, function(err, docs) {
+                if(err) {
+                    console.log('Error');
+                } else {
+                    console.log('Documents retrieved:', docs);
+                }
+            })
+        })
+        
+    }//End of findUpdateGoal
 
+    updateGoal(id, goalIn, startTimeIn, endTimeIn, startDateIn) {
+        this.db.update({'_id': id}, {$set: { 'goal': goalIn, 'startTime': startTimeIn, 'endTime': endTimeIn, 'startDate': startDateIn}}, {}, function(err, numUp) {
+            if(err) {
+                console.log('Error updating documents', err);
+            } else {
+                console.log(numUp, 'Document updated.');
+            }
+        })
+    }//End of updateGoal()
+
+  
 }
-
 
 
 

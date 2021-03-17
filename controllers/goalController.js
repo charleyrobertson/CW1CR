@@ -32,15 +32,21 @@ exports.new_goal = function(req, res) {
 
 exports.post_new_goal = function(req, res) {
     console.log('Adding a new goal to DB');
-
-    console.log(req.body.goal);
     db.addGoal(req.body.goal, req.body.startTime, req.body.endTime, req.body.startDate, req.body.user);
     res.redirect('/ViewTrainingGoals');
 }
 //End of Add a goal
 
 //Update a goal
+exports.update_goal = function(req, res) {
+    res.render('updateGoal');
+}
 
+exports.post_update_goal = function(req, res) {
+    console.log('Updating a goal...');
+    db.updateGoal(req.params._id, req.body.goal, req.body.startTime, req.body.endTime, req.body.startDate);
+    res.redirect('/ViewTrainingGoals');
+}
 //End of Update a goal
 
 //Delete a goal
