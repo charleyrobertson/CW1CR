@@ -48,7 +48,7 @@ exports.post_new_goal = function (req, res) {
 //Update a goal
 exports.update_goal = function (req, res) {
    let id = req.params._id;
-
+  console.log('Updating goal page loading...');
   db.findUpdateGoal(id).then((goal) => {
    res.render("updateGoal", {
        goal: goal,
