@@ -77,8 +77,10 @@ class Goal {
         return new Promise((resolve, reject) => {
             this.db.find({'_id': id}, function(err, docs) {
                 if(err) {
+                    reject(err);
                     console.log('Error');
                 } else {
+                    resolve(docs);
                     console.log('Documents retrieved:', docs);
                 }
             })
