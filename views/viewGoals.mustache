@@ -1,41 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>{{>head}}</head>
-<body>
-    <h1 style="text-align: center;">{{title}}</h1>
+  <head>
+    {{>head}}
+  </head>
+  <body>
+    <h1 style="text-align: center">{{ title }}</h1>
 
     <div class="text-right">
-        <a href="/newGoal" class="btn btn-primary">
-        Add a Goal
-        </a>
+      <a href="/newGoal" class="btn btn-primary"> Add a Goal </a>
     </div>
-
-
 
     {{#entries}}
-    <div hidden>{{_id}}</div>
+    <div hidden>{{ _id }}</div>
+    <div>Fitness Goal: {{ goal }}</div>
+    <div>Start Time: {{ startTime }}</div>
+    <div>End Time: {{ endTime }}</div>
+    <div>Written by {{ user }} , on {{ startDate }}</div>
     <div>
-       Fitness Goal: {{goal}}
+      <a href="/updateGoal/{{ _id }}">Update</a>
+      <a href="/deleteGoal/{{ _id }}">Delete</a>
     </div>
-    <div>
-       Start Time: {{startTime}}
-    </div>
-    <div>
-       End Time: {{endTime}}
-    </div>
-    <div>
-        Written by {{user}} , on {{startDate}}
-    </div>
-    <div>
-        <a href="/updateGoal/{{_id}}">Update</a> 
-        <a href="/deleteGoal/{{_id}}">Delete</a> 
-    </div>
-    <hr>
+    <hr />
     {{/entries}}
     {{^entries}}
     No fitness goals have been set yet.
     {{/entries}}
-    
-    
-</body>
+  </body>
 </html>
