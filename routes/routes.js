@@ -1,8 +1,9 @@
 const express = require("express");
-const router = express.Router();
-
+const auth = require('../auth/auth');
 const controller = require("../controllers/goalController.js");
+const userController = require("../controllers/userController.js")
 
+const router = express.Router();
 //Home page
 router.get("/", controller.home_page);
 
@@ -20,6 +21,16 @@ router.post("/updateGoal/:_id", controller.post_update_goal);
 //Delete a goal
 router.get("/deleteGoal/:_id", controller.delete_goal);
 router.post("/deleteGoal/:_id", controller.post_delete_goal);
+
+//Login
+router.get('/login', userController.login_user);
+router.post('/login', auth.authorize('/login'), userController.post_login_user);
+
+//Register
+router.get('/register', userController.register_user);
+router.post('/register', userController.post_register_user);
+
+//Log out
 
 //Exceptions
 router.use(function (req, res) {
