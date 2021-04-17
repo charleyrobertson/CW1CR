@@ -25,13 +25,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-      {{^user}}
+      
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/ViewTrainingGoals">Training Goals</a>
         </li>
+      {{^user}}
         <li class="nav-item">
           <a class="nav-link" href="/register">Register</a>
         </li>
@@ -42,7 +43,7 @@
       
       {{#user}}
         <li class="nav-item">
-          <a class="nav-link" href="#">Welcome {{user.user}}...</a>
+          <a class="nav-link" href="/logout">Log Out</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">User Settings</a>

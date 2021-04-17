@@ -110,4 +110,8 @@ class Goal {
   } //End of updateGoal()
 }
 
-module.exports = Goal;
+const dao = new Goal();
+dao.init();
+
+module.exports = dao;
+

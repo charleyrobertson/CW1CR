@@ -8,6 +8,9 @@ exports.register_user = function(req, res) {
 
 exports.post_register_user = function(req, res) {
     const user = req.body.username;
+    const email = req.body.email;
+    const name = req.body.name;
+    const dob = req.body.dob;
     const password = req.body.pass;
     //console.log("register user", user, "password", password);
   
@@ -20,7 +23,7 @@ exports.post_register_user = function(req, res) {
         res.send(401, "User exists:", user);
         return;
       }
-      UserDAO.create(user, password);
+      UserDAO.create(user, email, name, dob, password);
       res.redirect("/login");
     });
 };
@@ -35,3 +38,10 @@ exports.post_login_user = function(req, res) {
     res.redirect('/');
 };
 //End of Login
+
+//Logout 
+exports.logout = function(req, res) {
+    req.logout();
+    res.redirect("/");
+};
+//End of Logout

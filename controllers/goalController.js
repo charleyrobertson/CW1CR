@@ -1,13 +1,13 @@
 //Import goals class
 const { response } = require("express");
-const GoalDAO = require("../models/goalModel");
-const db = new GoalDAO();
+const db = require("../models/goalModel");
+
 
 //Home
 exports.home_page = function (req, res) {
-  res.render("home");
-  db.init();
-  console.log("Database Initialized");
+  res.render("home", {
+    user: req.user
+  });
 };
 //End of Home
 
@@ -18,6 +18,7 @@ exports.view_goals = function (req, res) {
       res.render("viewGoals", {
         title: "View All Training Goals",
         entries: list,
+        user: req.user
       });
       console.log("Promise Resolved");
     })
@@ -29,7 +30,10 @@ exports.view_goals = function (req, res) {
 
 //Add a goal
 exports.new_goal = function (req, res) {
-  res.render("addGoals");
+  res.render("addGoals", {
+    title: 'Add a Goal',
+    user: req.user
+  });
 };
 
 exports.post_new_goal = function (req, res) {
@@ -53,6 +57,7 @@ exports.update_goal = function (req, res) {
     .then((goal) => {
       res.render("updateGoal", {
         goal: goal,
+        user: req.user
       });
     })
     .catch((err) => {
@@ -75,7 +80,9 @@ exports.post_update_goal = function (req, res) {
 
 //Delete a goal
 exports.delete_goal = function (req, res) {
-  res.render("deleteGoal");
+  res.render("deleteGoal", {
+    user: req.user
+  });
 };
 
 exports.post_delete_goal = function (req, res) {
