@@ -43,7 +43,7 @@ exports.post_new_goal = function (req, res) {
     req.body.startTime,
     req.body.endTime,
     req.body.startDate,
-    req.body.user
+    req.user.name
   );
   res.redirect("/ViewTrainingGoals");
 };

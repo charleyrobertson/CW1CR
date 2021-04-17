@@ -50,7 +50,7 @@ class Goal {
       startDate: startDateIn,
       startTime: startTimeIn,
       endTime: endTimeIn,
-      user: userIn,
+      user: userIn
     };
 
     this.db.insert(entry, function (err, doc) {
