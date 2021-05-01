@@ -1,5 +1,5 @@
-# Coursework One - WPD 
-Coursework 1 for Web Platform Development
+# Coursework - WPD 
+Coursework for Web Platform Development
 A fitness application that will allow you to record your fitness goals.
 
 ## How to Use
