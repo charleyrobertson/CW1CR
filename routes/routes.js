@@ -23,6 +23,10 @@ router.post("/updateGoal/:_id", controller.post_update_goal);
 router.get("/deleteGoal/:_id", ensureLoggedIn('/login'), controller.delete_goal);
 router.post("/deleteGoal/:_id", controller.post_delete_goal);
 
+//Complete Goal
+router.get("/completeGoal/:_id", ensureLoggedIn('/login'), controller.complete_goal);
+router.post("/completeGoal/:_id", controller.post_complete_goal);
+
 //Login
 router.get('/login', userController.login_user);
 router.post('/login', auth.authorize('/login'), userController.post_login_user);

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{>head}}
+  </head>
+  <body class="container">
+    <h1 style="text-align: center">Complete Goal</h1>
+
+    <div hidden>{{ _id }}</div>
+
+    <p>Are you sure you want to complete this goal?</p>
+
+    <form method="post" role="form">
+      <div class="form-group">
+        <input type="submit" value="Complete Goal" class="btn btn-primary" />
+      </div>
+    </form>
+  </body>
+</html>

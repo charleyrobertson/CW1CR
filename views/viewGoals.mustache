@@ -15,8 +15,21 @@
     <div>Fitness Goal: {{ goal }}</div>
     <div>Start Time: {{ startTime }}</div>
     <div>End Time: {{ endTime }}</div>
+    <div>
+      {{^completed}}
+        <label for="{{completed}}">Completed:</label>
+        <input type="checkbox" id="completed" name="completed" value={{completed}} disabled>  
+      {{/completed}}
+      {{#completed}}
+        <label for="{{completed}}">Completed:</label>
+        <input type="checkbox" id="completed" name="completed" value={{completed}} checked disabled>  
+      {{/completed}}
+    </div>
     <div>Written by {{ user }} , on {{ startDate }}</div>
     <div>
+      {{^completed}}
+      <a href="/completeGoal/{{_id}}">Complete Goal</a>
+      {{/completed}}
       <a href="/updateGoal/{{ _id }}">Update</a>
       <a href="/deleteGoal/{{ _id }}">Delete</a>
     </div>

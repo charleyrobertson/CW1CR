@@ -18,6 +18,7 @@ class Goal {
       startDate: "2020-03-10",
       startTime: "07:00",
       endTime: "10:00",
+      completed: true,
       user: "Charley",
     });
     this.db.insert({
@@ -25,6 +26,7 @@ class Goal {
       startDate: "2020-03-12",
       startTime: "07:00",
       endTime: "10:00",
+      completed: false,
       user: "Charley",
     });
   } //End of init()
@@ -50,6 +52,7 @@ class Goal {
       startDate: startDateIn,
       startTime: startTimeIn,
       endTime: endTimeIn,
+      completed: false,
       user: userIn
     };
 
@@ -72,6 +75,27 @@ class Goal {
       }
     });
   } //End delete goal
+
+  //Complete Goal
+  completeGoal(id) {
+    this.db.update(
+      { _id: id },
+      {
+        $set: {
+          completed: true
+        },
+      },
+      {},
+      function (err, numUp) {
+        if (err) {
+          console.log("Error completing documents", err);
+        } else {
+          console.log(numUp, "Document completed.");
+        }
+      }
+    );
+  } //End of completeGoal()
+
 
   findUpdateGoal(id) {
     return new Promise((resolve, reject) => {

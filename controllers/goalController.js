@@ -91,3 +91,16 @@ exports.post_delete_goal = function (req, res) {
   res.redirect("/ViewTrainingGoals");
 };
 //End of Delete a goal
+
+//Complete Goal
+exports.complete_goal = function(req, res) {
+  res.render("completeGoal", {
+    user: req.user
+  });
+};
+
+exports.post_complete_goal = function(req, res) {
+  console.log("Completing goal..");
+  db.completeGoal(req.params._id);
+  res.redirect("/ViewTrainingGoals");
+}

@@ -32,6 +32,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/ViewTrainingGoals">Training Goals</a>
         </li>
+        <span class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
       {{^user}}
         <li class="nav-item">
           <a class="nav-link" href="/register">Register</a>
@@ -41,12 +42,12 @@
         </li>
       {{/user}}
       
-      {{#user}}
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Log Out</a>
-        </li>
+      {{#user}}   
         <li class="nav-item">
           <a class="nav-link" href="#">User Settings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log Out</a>
         </li>
       {{/user}}
       </ul>
