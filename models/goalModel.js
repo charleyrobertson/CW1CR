@@ -15,7 +15,7 @@ class Goal {
   init() {
     this.db.insert({
       goal: "Go running",
-      startDate: "2020-03-10",
+      startDate: "2021-04-10",
       startTime: "07:00",
       endTime: "10:00",
       completed: true,
@@ -23,7 +23,7 @@ class Goal {
     });
     this.db.insert({
       goal: "Walk 5 miles",
-      startDate: "2020-03-12",
+      startDate: "2021-04-12",
       startTime: "07:00",
       endTime: "10:00",
       completed: false,
@@ -31,10 +31,10 @@ class Goal {
     });
   } //End of init()
 
-  getAllGoals() {
+  getAllGoals(username) {
     //Return a promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
-      this.db.find({}, function (err, entries) {
+      this.db.find({ user: username }, function (err, entries) {
         if (err) {
           reject(err);
         } else {
@@ -44,6 +44,8 @@ class Goal {
       });
     });
   } //End of getAllGoals()
+
+  
 
   addGoal(goalIn, startTimeIn, endTimeIn, startDateIn, userIn) {
     console.log("Adding goal to the database");
@@ -77,9 +79,9 @@ class Goal {
   } //End delete goal
 
   //Complete Goal
-  completeGoal(id) {
+  completeGoal(_id) {
     this.db.update(
-      { _id: id },
+      { _id: _id },
       {
         $set: {
           completed: true
@@ -95,7 +97,6 @@ class Goal {
       }
     );
   } //End of completeGoal()
-
 
   findUpdateGoal(id) {
     return new Promise((resolve, reject) => {
@@ -132,6 +133,9 @@ class Goal {
       }
     );
   } //End of updateGoal()
+
+
+
 }
 
 const dao = new Goal();

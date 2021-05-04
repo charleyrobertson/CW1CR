@@ -5,27 +5,27 @@ const controller = require("../controllers/goalController.js");
 const userController = require("../controllers/userController.js")
 
 const router = express.Router();
+
 //Home page
 router.get("/", controller.home_page);
 
 //View all goals page
-router.get("/ViewTrainingGoals", controller.view_goals);
+router.get("/view-goals", ensureLoggedIn('/login'), controller.view_goals);
 
 //Add a goal page
-router.get("/newGoal", ensureLoggedIn('/login'), controller.new_goal);
-router.post("/newGoal", controller.post_new_goal);
+router.get("/add-goal", ensureLoggedIn('/login'), controller.new_goal);
+router.post("/add-goal", controller.post_new_goal);
 
 //Update a goal
-router.get("/updateGoal/:_id", ensureLoggedIn('/login'), controller.update_goal);
-router.post("/updateGoal/:_id", controller.post_update_goal);
+router.get("/update-goal/:_id", ensureLoggedIn('/login'), controller.update_goal);
+router.post("/update-goal/:_id", controller.post_update_goal);
 
 //Delete a goal
-router.get("/deleteGoal/:_id", ensureLoggedIn('/login'), controller.delete_goal);
-router.post("/deleteGoal/:_id", controller.post_delete_goal);
+router.get("/delete-goal/:_id", ensureLoggedIn('/login'), controller.delete_goal);
+router.post("/delete-goal/:_id", controller.post_delete_goal);
 
 //Complete Goal
-router.get("/completeGoal/:_id", ensureLoggedIn('/login'), controller.complete_goal);
-router.post("/completeGoal/:_id", controller.post_complete_goal);
+router.post("/view-goals", controller.post_complete_goal);
 
 //Login
 router.get('/login', userController.login_user);

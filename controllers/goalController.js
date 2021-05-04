@@ -12,11 +12,12 @@ exports.home_page = function (req, res) {
 //End of Home
 
 //View All Goals
+//Call getusername kind of thing
 exports.view_goals = function (req, res) {
-  db.getAllGoals()
+  db.getAllGoals(req.user.user)
     .then((list) => {
       res.render("viewGoals", {
-        title: "View All Training Goals",
+        title: "View Training Goals",
         entries: list,
         user: req.user
       });
@@ -43,9 +44,9 @@ exports.post_new_goal = function (req, res) {
     req.body.startTime,
     req.body.endTime,
     req.body.startDate,
-    req.user.name
+    req.user.user
   );
-  res.redirect("/ViewTrainingGoals");
+  res.redirect("/view-goals");
 };
 //End of Add a goal
 
@@ -74,7 +75,7 @@ exports.post_update_goal = function (req, res) {
     req.body.endTime,
     req.body.startDate
   );
-  res.redirect("/ViewTrainingGoals");
+  res.redirect("/view-goals");
 };
 //End of Update a goal
 
@@ -88,19 +89,13 @@ exports.delete_goal = function (req, res) {
 exports.post_delete_goal = function (req, res) {
   console.log("Deleting a goal...");
   db.deleteGoal(req.params._id);
-  res.redirect("/ViewTrainingGoals");
+  res.redirect("/view-goals");
 };
 //End of Delete a goal
 
 //Complete Goal
-exports.complete_goal = function(req, res) {
-  res.render("completeGoal", {
-    user: req.user
-  });
-};
-
 exports.post_complete_goal = function(req, res) {
   console.log("Completing goal..");
-  db.completeGoal(req.params._id);
-  res.redirect("/ViewTrainingGoals");
+  db.completeGoal(req.body.completeButton);
+  res.redirect("/view-goals");
 }
