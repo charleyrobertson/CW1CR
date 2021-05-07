@@ -23,7 +23,7 @@ class Goal {
     });
     this.db.insert({
       goal: "Walk 5 miles",
-      startDate: "2021-04-12",
+      startDate: "2021-05-03",
       startTime: "07:00",
       endTime: "10:00",
       completed: false,
@@ -34,7 +34,7 @@ class Goal {
   getAllGoals(username) {
     //Return a promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
-      this.db.find({ user: username }, function (err, entries) {
+     this.db.find({ user: username }, function (err, entries) {
         if (err) {
           reject(err);
         } else {
@@ -46,6 +46,34 @@ class Goal {
   } //End of getAllGoals()
 
   
+  //Get week
+  getWeeklyGoals(){
+     let curr = new Date;
+     let week = [];
+     let day1 = new Date;
+    
+     for(let i=1; i <=7; i++)
+     {
+       let first = curr.getDate() - curr.getDay() + i;
+       let day = new Date(curr.setDate(first)).toISOString().slice(0,10);
+       week.push(day);
+     }
+
+    console.log(week);
+    
+    return new Promise((resolve, reject) => {
+      this.db.find({ startDate: week  }, function (err, entries) {
+         if (err) {
+           reject(err);
+         } else {
+           resolve(entries);
+           console.log("getWeeklyGoals() returns the following: ", entries);
+         }
+       });
+     });
+    
+  }//End of get week
+
 
   addGoal(goalIn, startTimeIn, endTimeIn, startDateIn, userIn) {
     console.log("Adding goal to the database");

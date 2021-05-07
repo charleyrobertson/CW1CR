@@ -8,13 +8,15 @@ exports.home_page = function (req, res) {
   res.render("home", {
     user: req.user
   });
+  
 };
 //End of Home
 
 //View All Goals
 //Call getusername kind of thing
 exports.view_goals = function (req, res) {
-  db.getAllGoals(req.user.user)
+  //db.getAllGoals(req.user.user)
+  db.getWeeklyGoals()
     .then((list) => {
       res.render("viewGoals", {
         title: "View Training Goals",

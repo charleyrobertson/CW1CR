@@ -18,10 +18,10 @@ class UserDAO {
       email: "charley@gmail.com",
       name: "Charley",
       dob: "2000-11-16",
-      password: "$2a$10$s3g4WOBRo1u1dFTuRrmlduYekquhp0JJvHl0C/ArriNl5bWoNtrHC",
+      password: "$2y$10$p4fzL6otQHp352RM96qMIuIf31oEyb.div9NDrwHPjbskEJkBcWNO",
     });
     console.log('Charley - User record inserted in init');
-
+    
     return this;
   }
   create(username, email, name, dob, password) {
