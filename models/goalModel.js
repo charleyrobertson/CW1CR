@@ -79,6 +79,7 @@ class Goal {
                     if (err) {
                         reject(err);
                     } else {
+                        dateFunc.sortDates(entries);
                         resolve(entries);
                         console.log("getWeeklyGoals: ", entries);
                     }

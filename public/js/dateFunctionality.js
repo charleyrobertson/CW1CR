@@ -29,6 +29,11 @@ getStartandEndDays(startDate) {
 }
 
 //Get dates to display first-last day of week
+sortDates(entries) {
+    var sortedJsObjects = entries.sort(function(a,b){ 
+        return Math.abs(new Date(a.date) - new Date(b.date)) 
+    });
+}
 
 //Ensure that the startime < end time
 
