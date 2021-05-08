@@ -1,5 +1,6 @@
 class dateFunctionality {
 
+//Get week of goal
 getWeek() {
     let curr = new Date;
     let week = [];
@@ -13,6 +14,7 @@ getWeek() {
    return week;
 }
 
+//Get start and end dates of the week
 getStartandEndDays(startDate) {
     let curr = new Date(startDate);
     let week = [];
@@ -25,6 +27,13 @@ getStartandEndDays(startDate) {
     }
    return week;
 }
+
+//Get dates to display first-last day of week
+
+//Ensure that the startime < end time
+
+
+
 
 }
 
