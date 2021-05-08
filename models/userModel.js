@@ -18,7 +18,7 @@ class UserDAO {
       email: "charley@gmail.com",
       name: "Charley",
       dob: "2000-11-16",
-      password: "$2y$10$p4fzL6otQHp352RM96qMIuIf31oEyb.div9NDrwHPjbskEJkBcWNO",
+      password: "$2b$10$I82WRFuGghOMjtu3LLZW9OAMrmYOlMZjEEkh.vx.K2MM05iu5hY2C",
     });
     console.log('Charley - User record inserted in init');
     

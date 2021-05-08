@@ -1,7 +1,8 @@
 //Import goals class
 const { response } = require("express");
 const db = require("../models/goalModel");
-
+const dateFunctionality = require("../public/js/dateFunctionality");
+const dateFunc = new dateFunctionality();
 
 //Home
 exports.home_page = function (req, res) {
@@ -13,10 +14,11 @@ exports.home_page = function (req, res) {
 //End of Home
 
 //View All Goals
-//Call getusername kind of thing
 exports.view_goals = function (req, res) {
-  //db.getAllGoals(req.user.user)
-  db.getWeeklyGoals()
+  var user = req.user.user;
+  var week = dateFunc.getWeek();
+
+  db.getWeeklyGoals(user, week)
     .then((list) => {
       res.render("viewGoals", {
         title: "View Training Goals",
@@ -74,8 +76,7 @@ exports.post_update_goal = function (req, res) {
     req.params._id,
     req.body.goal,
     req.body.startTime,
-    req.body.endTime,
-    req.body.startDate
+    req.body.endTime
   );
   res.redirect("/view-goals");
 };
