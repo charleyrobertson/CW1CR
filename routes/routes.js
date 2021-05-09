@@ -37,7 +37,8 @@ router.post("/delete-goal/:_id", controller.post_delete_goal);
 router.post("/view-weekly-goals", controller.post_complete_goal);
 
 //Sharable URL
-router.get('/share-link', controller.share_link);
+router.get('/share-link/:username', controller.share_link);
+router.get('/share-link/:username/:date', controller.share_link_guest);
 
 //User Details
 router.get("/user-details", ensureLoggedIn('/login'), userController.user_details);

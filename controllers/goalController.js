@@ -45,21 +45,22 @@ exports.view_weekly_goals = function (req, res) {
 
 //Share Link
 exports.share_link = function (req, res) {
-  var week = dateFunc.getWeek();
-  let id = req.params._id;
+ res.render("shareLink",
+ {
+   title: "Share Link",
+   user: req.user
+ })
+};
 
-  db.getShareGoals(week, req.user.user)
-    .then((list) => {
-      res.render("shareGoals", {
-        title: "View " + req.user.user + "'s Weekly Goals",
-        entries: list,
-        user: req.user
-      });
-      console.log("Promise Resolved");
+exports.share_link_guest = function (req, res) {
+  var username = req.params.username;
+  
+  var week = dateFunc.getWeek();
+  db.getWeeklyGoals(user, week).then((list) => {
+    res.render("shareGoal", {
+      entries: list
     })
-    .catch((err) => {
-      console.log("Promise Rejected", err);
-    });
+  })
 };
 
 //View Past Goals

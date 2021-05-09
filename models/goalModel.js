@@ -108,44 +108,6 @@ getWeeklyGoals(user, weekIn) {
       });
 } //End of get week
 
-
-//Get shareable goals
-getShareGoals(weekIn, username) {
-  var week = weekIn;
-      return new Promise((resolve, reject) => {
-          this.db.find(
-              {
-                  user: username,
-                  $and: [
-                      {
-                          weekStart: {
-                              $gte: new Date(week[0])
-                                  .toISOString()
-                                  .substring(0, 10),
-                          },
-                      },
-                      {
-                          weekEnd: {
-                              $lte: new Date(week[6])
-                                  .toISOString()
-                                  .substring(0, 10),
-                          },
-                      },
-                  ],
-              },
-              function (err, entries) {
-                  if (err) {
-                      reject(err);
-                  } else {
-                      dateFunc.sortDates(entries);
-                      resolve(entries);
-                      console.log("getWeeklyGoals: ", entries);
-                  }
-              }
-          );
-      });
-} //End of get sharable goals
-
 //Get past goals
 getPastGoals(user, foWIn) {
   var week = foWIn;
