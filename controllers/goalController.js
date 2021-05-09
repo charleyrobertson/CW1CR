@@ -13,15 +13,25 @@ exports.home_page = function (req, res) {
 };
 //End of Home
 
-//View All Goals
-exports.view_goals = function (req, res) {
+//Goal Options
+exports.goal_options = function(req, res) {
+  res.render("goalOptions", {
+    user: req.user
+  });
+}
+
+
+//End of Goal Options
+
+//View weekly Goals
+exports.view_weekly_goals = function (req, res) {
   var user = req.user.user;
   var week = dateFunc.getWeek();
 
   db.getWeeklyGoals(user, week)
     .then((list) => {
       res.render("viewGoals", {
-        title: "View Training Goals",
+        title: "View Weekly Goals",
         entries: list,
         user: req.user
       });
@@ -31,7 +41,46 @@ exports.view_goals = function (req, res) {
       console.log("Promise Rejected", err);
     });
 };
-//End of View All Goals
+//End of View weekly Goals
+
+//View Past Goals
+exports.view_past_goals = function (req, res) {
+  var user = req.user.user;
+  var week = dateFunc.getWeek();
+
+  db.getPastGoals(user, week)
+    .then((list) => {
+      res.render("pastGoals", {
+        title: "View Past Goals",
+        entries: list,
+        user: req.user
+      });
+      console.log("Promise Resolved");
+    })
+    .catch((err) => {
+      console.log("Promise Rejected", err);
+    });
+}; //End of View Past Goals
+
+//View Future Goals
+exports.view_future_goals = function (req, res) {
+  var user = req.user.user;
+  var week = dateFunc.getWeek();
+
+  db.getFutureGoals(user, week)
+    .then((list) => {
+      res.render("futureGoals", {
+        title: "View Future Goals",
+        entries: list,
+        user: req.user
+      });
+      console.log("Promise Resolved");
+    })
+    .catch((err) => {
+      console.log("Promise Rejected", err);
+    });
+}; //End of View future Goals
+
 
 //Add a goal
 exports.new_goal = function (req, res) {
@@ -50,7 +99,7 @@ exports.post_new_goal = function (req, res) {
     req.body.startDate,
     req.user.user
   );
-  res.redirect("/view-goals");
+  res.redirect("/view-weekly-goals");
 };
 //End of Add a goal
 
@@ -78,7 +127,7 @@ exports.post_update_goal = function (req, res) {
     req.body.startTime,
     req.body.endTime
   );
-  res.redirect("/view-goals");
+  res.redirect("/view-weekly-goals");
 };
 //End of Update a goal
 
@@ -92,7 +141,7 @@ exports.delete_goal = function (req, res) {
 exports.post_delete_goal = function (req, res) {
   console.log("Deleting a goal...");
   db.deleteGoal(req.params._id);
-  res.redirect("/view-goals");
+  res.redirect("/view-weekly-goals");
 };
 //End of Delete a goal
 
@@ -100,5 +149,5 @@ exports.post_delete_goal = function (req, res) {
 exports.post_complete_goal = function(req, res) {
   console.log("Completing goal..");
   db.completeGoal(req.body.completeButton);
-  res.redirect("/view-goals");
+  res.redirect("/view-weekly-goals");
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{>head}}
+  </head>
+  <body class="container">
+    <h1 style="text-align: center">{{ title }}</h1>
+
+     {{#entries}}
+    <hr />
+    <div hidden>{{ _id }}</div>
+    <div>Fitness Goal: {{ goal }}</div>
+    <div>Start Time: {{ startTime }}</div>
+    <div>End Time: {{ endTime }}</div>
+    <div>
+      {{^completed}}
+        <label for="{{completed}}">Completed:</label>
+        <input type="checkbox" id="completed" name="completed" value={{completed}} disabled>  
+      {{/completed}}
+      {{#completed}}
+        <label for="{{completed}}">Completed:</label>
+        <input type="checkbox" id="completed" name="completed" value={{completed}} checked disabled>  
+      {{/completed}}
+    </div>
+    <div>Written by {{ user }} , on {{ startDate }}</div>
+
+    <hr />
+    {{/entries}}
+    {{^entries}}
+    No fitness goals have been set yet.
+    {{/entries}}
+  </body>
+</html>

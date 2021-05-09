@@ -35,10 +35,6 @@ sortDates(entries) {
     });
 }
 
-//Ensure that the startime < end time
-
-
-
 
 }
 

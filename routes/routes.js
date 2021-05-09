@@ -9,8 +9,17 @@ const router = express.Router();
 //Home page
 router.get("/", controller.home_page);
 
-//View all goals page
-router.get("/view-goals", ensureLoggedIn('/login'), controller.view_goals);
+//View Goal Options page
+router.get("/goal-options", controller.goal_options);
+
+//View weekly goals page
+router.get("/view-weekly-goals", ensureLoggedIn('/login'), controller.view_weekly_goals);
+
+//View past goals page
+router.get("/view-past-goals", ensureLoggedIn('/login'), controller.view_past_goals);
+
+//View future goals page
+router.get("/view-future-goals", ensureLoggedIn('/login'), controller.view_future_goals);
 
 //Add a goal page
 router.get("/add-goal", ensureLoggedIn('/login'), controller.new_goal);
@@ -25,7 +34,7 @@ router.get("/delete-goal/:_id", ensureLoggedIn('/login'), controller.delete_goal
 router.post("/delete-goal/:_id", controller.post_delete_goal);
 
 //Complete Goal
-router.post("/view-goals", controller.post_complete_goal);
+router.post("/view-weekly-goals", controller.post_complete_goal);
 
 //Login
 router.get('/login', userController.login_user);
