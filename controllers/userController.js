@@ -1,6 +1,15 @@
 const { response } = require("express");
 const UserDAO = require("../models/userModel");
 
+//User Details
+exports.user_details = function (req, res) {
+  res.render("userDetails", {
+    title: 'Personal Details',
+    user: req.user
+  });
+};
+//End of user details
+
 //Register
 exports.register_user = function(req, res) {
     res.render('register');

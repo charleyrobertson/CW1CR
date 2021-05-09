@@ -36,6 +36,9 @@ router.post("/delete-goal/:_id", controller.post_delete_goal);
 //Complete Goal
 router.post("/view-weekly-goals", controller.post_complete_goal);
 
+//User Details
+router.get("/user-details", ensureLoggedIn('/login'), userController.user_details);
+
 //Login
 router.get('/login', userController.login_user);
 router.post('/login', auth.authorize('/login'), userController.post_login_user);

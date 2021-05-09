@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{>head}}
+  </head>
+  <body class="container">
+    <h1 style="text-align: center">{{ title }}</h1>
+
+    {{#user}}
+    <hr />
+    <div hidden>{{ _id }}</div>
+    <div>Username: {{ user }}</div>
+    <div>Email: {{ email }}</div>
+    <div>Name: {{ name }}</div>
+    <div>Date of Birth: {{ dob }}</div>
+    {{/user}}
+</body>
+</html>
