@@ -17,9 +17,9 @@ class Goal {
   init() {
     this.db.insert({
       goal: "Go running",
-      startDate: "2021-05-06",
-      weekStart: "2021-05-03",
-      weekEnd: "2021-05-09",
+      startDate: "2021-05-15",
+      weekStart: "2021-05-10",
+      weekEnd: "2021-05-16",
       startTime: "07:00",
       endTime: "10:00",
       completed: true,
@@ -27,9 +27,9 @@ class Goal {
     });
     this.db.insert({
       goal: "Walk 5 miles",
-      startDate: "2021-05-04",
-      weekStart: "2021-05-03",
-      weekEnd: "2021-05-09",
+      startDate: "2021-05-11",
+      weekStart: "2021-05-10",
+      weekEnd: "2021-05-16",
       startTime: "07:00",
       endTime: "10:00",
       completed: false,
@@ -51,42 +51,42 @@ class Goal {
     });
   } //End of getAllGoals()
 
-  //Get week
-  getWeeklyGoals(user, weekIn) {
-    var week = weekIn;
-        return new Promise((resolve, reject) => {
-            this.db.find(
-                {
-                    user: user,
-                    $and: [
-                        {
-                            weekStart: {
-                                $gte: new Date(week[0])
-                                    .toISOString()
-                                    .substring(0, 10),
-                            },
-                        },
-                        {
-                            weekEnd: {
-                                $lte: new Date(week[6])
-                                    .toISOString()
-                                    .substring(0, 10),
-                            },
-                        },
-                    ],
-                },
-                function (err, entries) {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        dateFunc.sortDates(entries);
-                        resolve(entries);
-                        console.log("getWeeklyGoals: ", entries);
-                    }
-                }
-            );
-        });
-  } //End of get week
+//Get week
+getWeeklyGoals(user, weekIn) {
+  var week = weekIn;
+      return new Promise((resolve, reject) => {
+          this.db.find(
+              {
+                  user: user,
+                  $and: [
+                      {
+                          weekStart: {
+                              $gte: new Date(week[0])
+                                  .toISOString()
+                                  .substring(0, 10),
+                          },
+                      },
+                      {
+                          weekEnd: {
+                              $lte: new Date(week[6])
+                                  .toISOString()
+                                  .substring(0, 10),
+                          },
+                      },
+                  ],
+              },
+              function (err, entries) {
+                  if (err) {
+                      reject(err);
+                  } else {
+                      dateFunc.sortDates(entries);
+                      resolve(entries);
+                      console.log("getWeeklyGoals: ", entries);
+                  }
+              }
+          );
+      });
+} //End of get week
 
   addGoal(goalIn, startTimeIn, endTimeIn, startDateIn, userIn) {
     const week = dateFunc.getStartandEndDays(startDateIn);

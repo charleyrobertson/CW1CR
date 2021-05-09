@@ -6,11 +6,12 @@
   <body class="container">
     <h1 style="text-align: center">{{ title }}</h1>
 
-    <div class="text-right">
-      <a href="/add-goal" class="btn btn-primary"> Add a Goal </a>
+    <div class="text-center">
+      <a href="/add-goal" class="btn btn-secondary"> Add a Goal </a>
     </div>
 
     {{#entries}}
+    <hr />
     <div hidden>{{ _id }}</div>
     <div>Fitness Goal: {{ goal }}</div>
     <div>Start Time: {{ startTime }}</div>
@@ -32,11 +33,12 @@
         <button type="submit"
                 name="completeButton"
                 value="{{_id}}"
-                class="btn btn-submit btn-sm">Complete Goal</button>
+                class="btn btn-outline-dark">Complete Goal</button>
       </form>
       {{/completed}}
-      <a href="/update-goal/{{ _id }}">Update</a>
-      <a href="/delete-goal/{{ _id }}">Delete</a>
+      
+      <a class="btn btn-outline-warning" href="/update-goal/{{ _id }}">Update</a>
+      <a class="btn btn-outline-danger" href="/delete-goal/{{ _id }}">Delete</a>
     </div>
     <hr />
     {{/entries}}

@@ -21,6 +21,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 auth.init(app);
 
+var pathfinderUI = require('pathfinder-ui');
+app.use('/pathfinder', function(req, res, next){
+	pathfinderUI(app)
+	next()
+}, pathfinderUI.router);
 
 app.use(express.static(public));
 app.use(express.static(views));
