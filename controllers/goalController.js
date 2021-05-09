@@ -56,9 +56,9 @@ exports.share_link_guest = function (req, res) {
   var username = req.params.username;
   
   var week = dateFunc.getWeek();
-  db.getWeeklyGoals(user, week).then((list) => {
-    res.render("shareGoal", {
-      entries: list
+  db.getWeeklyGoals(username, week).then((list) => {
+    res.render("shareGoals", {
+      entries: list,
     })
   })
 };
