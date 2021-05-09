@@ -43,6 +43,25 @@ exports.view_weekly_goals = function (req, res) {
 };
 //End of View weekly Goals
 
+//Share Link
+exports.share_link = function (req, res) {
+  var week = dateFunc.getWeek();
+  let id = req.params._id;
+
+  db.getShareGoals(id, week, req.user.user)
+    .then((list) => {
+      res.render("shareGoals", {
+        title: "View " + req.user.user + "'s Weekly Goals",
+        entries: list,
+        user: req.user
+      });
+      console.log("Promise Resolved");
+    })
+    .catch((err) => {
+      console.log("Promise Rejected", err);
+    });
+};
+
 //View Past Goals
 exports.view_past_goals = function (req, res) {
   var user = req.user.user;
