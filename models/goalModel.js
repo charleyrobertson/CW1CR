@@ -110,7 +110,7 @@ getWeeklyGoals(user, weekIn) {
 
 
 //Get shareable goals
-getShareGoals(userID, weekIn, username) {
+getShareGoals(weekIn, username) {
   var week = weekIn;
       return new Promise((resolve, reject) => {
           this.db.find(

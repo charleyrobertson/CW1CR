@@ -48,7 +48,7 @@ exports.share_link = function (req, res) {
   var week = dateFunc.getWeek();
   let id = req.params._id;
 
-  db.getShareGoals(id, week, req.user.user)
+  db.getShareGoals(week, req.user.user)
     .then((list) => {
       res.render("shareGoals", {
         title: "View " + req.user.user + "'s Weekly Goals",
