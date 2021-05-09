@@ -19,6 +19,9 @@
   "bugs": {
     "url": "https://github.com/charleyrobertson/CW1CR/issues"
   },
+  "engines": {
+    "node": "14.16.0"
+  },
   "homepage": "https://github.com/charleyrobertson/CW1CR#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
