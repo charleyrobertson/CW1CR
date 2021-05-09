@@ -3,13 +3,21 @@
   <head>
     {{>head}}
   </head>
-  <body class="container">
+  <body class="container" style="text-align: center;">
     <h1 style="text-align: center">Delete Goal</h1>
 
-    <div hidden>{{ _id }}</div>
-
     <p style="text-align: center;">Are you sure you want to delete this goal?</p>
-
+    
+    {{#entries}}
+    <hr />
+    <div hidden>{{ _id }}</div>
+    <div>Goal: {{ goal }}</div> 
+    <div>Start Time: {{ startTime }}</div>
+    <div>Finish Time: {{ endTime }}</div>
+    <div>Start Date: {{ startDate }}</div>
+  
+  </hr>
+    {{/entries}}
     
     <form method="post" role="form">
       <div style="text-align: center" class="form-group">
