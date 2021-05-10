@@ -15,6 +15,9 @@ router.get("/goal-options", controller.goal_options);
 //View weekly goals page
 router.get("/view-weekly-goals", ensureLoggedIn('/login'), controller.view_weekly_goals);
 
+//View incomplete goals page
+router.get('/view-incomplete-goals', ensureLoggedIn('/login'), controller.incomplete_goals);
+
 //View past goals page
 router.get("/view-past-goals", ensureLoggedIn('/login'), controller.view_past_goals);
 

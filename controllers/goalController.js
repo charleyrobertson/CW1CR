@@ -19,8 +19,6 @@ exports.goal_options = function(req, res) {
     user: req.user
   });
 }
-
-
 //End of Goal Options
 
 //View weekly Goals
@@ -42,6 +40,23 @@ exports.view_weekly_goals = function (req, res) {
     });
 };
 //End of View weekly Goals
+
+//View incomplete goals
+exports.incomplete_goals = function(req, res) {
+  var user = req.user.user;
+  db.getAllUncompletedTasks(user)
+    .then((list) => {
+      res.render("incompleteGoals", {
+        title: "View Incomplete Goals",
+        entries: list,
+        user: req.user
+      });
+      console.log("Promise Resolved");
+    })
+    .catch((err) => {
+      console.log("Promise Rejected", err);
+    });
+}
 
 //Share Link
 exports.share_link = function (req, res) {

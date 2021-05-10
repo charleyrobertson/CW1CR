@@ -108,6 +108,18 @@ getWeeklyGoals(user, weekIn) {
       });
 } //End of get week
 
+getAllUncompletedTasks(userIn) {
+  return new Promise((resolve, reject) => {
+      this.db.find({ user: userIn, completed: false }, {}, function (err, docs) {
+          if (err) {
+              reject(err);
+          } else {
+              resolve(docs);
+          }
+      });
+  });
+}
+
 //Get past goals
 getPastGoals(user, foWIn) {
   var week = foWIn;
@@ -158,7 +170,7 @@ getFutureGoals(user, LoWIn) {
               }
           );
       });
-};  //End of get past goals
+};  //End of get future goals
 
   addGoal(goalIn, startTimeIn, endTimeIn, startDateIn, userIn) {
     const week = dateFunc.getStartandEndDays(startDateIn);
